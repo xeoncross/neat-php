@@ -1,0 +1,52 @@
+<h1>{{header}}</h1>
+<h3>{{motto}}</h3>
+
+{{ # bug}}<p>{{bug}} Report</p>{{ / bug}}
+
+{{ #check }}<p>{{check}} Report</p>{{ /check }}
+
+{{ #items  }}
+	{{#first}}
+		<li>First item in {{check}} Report: <strong>{{&name}}</strong> {{i}}</li>
+	{{/first}}
+	{{#link}}
+		<li><a href="{{url}}">{{name}}</a> {{i}}</li>
+	{{/link}}
+{{/items}}
+
+{{! ignore me }}
+
+{{#empty}}
+	<p>The list is empty.</p>
+{{/empty}}
+
+This item will not be escaped {{&html}}
+
+{{^empty}}
+	<p>Looks like "empty" _really is_ empty</p>
+{{/empty}}
+
+
+{{! callback inside of loop}}
+{{#people}}
+	<p>{{greeting}}</p>
+{{/people}}
+
+
+{{! Adding foreach vs conditionals}}
+{{#items}}
+	<ul>
+		{{%items}}
+			{{#first}}
+				<li><strong>{{name}}</strong></li>
+			{{/first}}
+			{{#link}}
+				<li><a href="{{url}}">{{name}}</a></li>
+			{{/link}}
+		{{/items}}
+	</ul>
+{{/items}}
+
+
+{{! Partials}}
+{{>partial}}
